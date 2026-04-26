@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- EDITAR: título da aba do navegador -->
+<title>Ninja dos Cálculos</title>
+<meta name="description" content="Capacitação completa para você executar cálculos com velocidade ninja. Inteiros, frações, decimais e porcentagens.">
+
+<!-- Tipografias da identidade visual -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Georgia já é fonte de sistema, não precisa carregar -->
+
+<style>
+  /* =========================================================
+     IDENTIDADE VISUAL — NINJA DOS CÁLCULOS
+     ========================================================= */
+  :root {
+    --branco: #FFFFFF;
+    --ambar: #F5A623;
+    --preto-tinta: #0D0D0D;
+    --cinza-claro: #CCCCCC;
+    --carvao: #1A1A1A;
+    --esmeralda: #1E8449;
+    --vinho: #C0392B;
+    --cobalto: #2E86C1;
+
+    --font-titulo: Georgia, 'Times New Roman', serif;
+    --font-corpo: 'Inter', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-corpo);
+    background: var(--preto-tinta);
+    color: var(--branco);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-titulo);
+    font-weight: bold;
+    line-height: 1.2;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* =========================================================
+     BOTÃO CTA (Call to Action) — usado em toda a página
+     ========================================================= */
+  .cta-btn {
+    display: inline-block;
+    background: var(--ambar);
+    color: var(--preto-tinta);
+    font-family: var(--font-corpo);
+    font-weight: 700;
+    font-size: 18px;
+    padding: 18px 36px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(245, 166, 35, 0.3);
+  }
+  .cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(245, 166, 35, 0.5);
+  }
+  .cta-btn.large {
+    font-size: 22px;
+    padding: 22px 48px;
+  }
+
+  /* =========================================================
+     HEADER — barra fixa com logo e CTA
+     ========================================================= */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(13, 13, 13, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--carvao);
+    padding: 16px 0;
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-titulo);
+  font-size: 22px;
+  color: var(--ambar);
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  }
+  .logo img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  }
+  .logo span { color: var(--branco); }
+
+  .header-cta {
+    background: var(--ambar);
+    color: var(--preto-tinta);
+    padding: 10px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+  }
+
+  /* =========================================================
+     HERO — primeira dobra (pergunta + headline + CTA)
+     ========================================================= */
+  .hero {
+    padding: 80px 0 60px;
+    text-align: center;
+    background: radial-gradient(ellipse at top, rgba(245, 166, 35, 0.08) 0%, transparent 60%);
+  }
+  .hero .pergunta {
+    font-family: var(--font-corpo);
+    font-size: 18px;
+    color: var(--cinza-claro);
+    margin-bottom: 24px;
+    font-weight: 400;
+    font-style: italic;
+  }
+  .hero h1 {
+    font-size: clamp(36px, 5vw, 64px);
+    margin-bottom: 24px;
+    color: var(--branco);
+  }
+  .hero h1 .destaque { color: var(--ambar); }
+  .hero .slogan {
+    font-family: var(--font-titulo);
+    font-style: italic;
+    font-size: 22px;
+    color: var(--ambar);
+    margin: 32px 0 40px;
+  }
+  .hero .subtitulo {
+    font-size: 19px;
+    color: var(--cinza-claro);
+    max-width: 700px;
+    margin: 0 auto 40px;
+  }
+
+  /* =========================================================
+     VSL — área do vídeo
+     ========================================================= */
+  .vsl-section {
+    padding: 40px 0 80px;
+  }
+  .vsl-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    aspect-ratio: 16/9;
+    background: var(--carvao);
+    border: 2px solid var(--ambar);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .vsl-placeholder {
+    text-align: center;
+    color: var(--cinza-claro);
+  }
+  .vsl-placeholder .icon { font-size: 64px; margin-bottom: 16px; }
+
+  /* =========================================================
+     SOLUÇÃO — 3 PILARES
+     ========================================================= */
+  .solucao {
+    padding: 80px 0;
+    background: var(--carvao);
+    text-align: center;
+  }
+  .solucao h2 {
+    font-size: clamp(28px, 4vw, 44px);
+    margin-bottom: 16px;
+  }
+  .solucao .intro {
+    font-size: 19px;
+    color: var(--cinza-claro);
+    max-width: 750px;
+    margin: 0 auto 60px;
+  }
+  .pilares {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+    margin-top: 48px;
+  }
+  .pilar {
+    background: var(--preto-tinta);
+    padding: 40px 28px;
+    border-radius: 12px;
+    border-top: 4px solid var(--ambar);
+    text-align: left;
+  }
+  .pilar-num {
+    font-family: var(--font-titulo);
+    font-size: 48px;
+    color: var(--ambar);
+    font-weight: bold;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .pilar h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+    color: var(--branco);
+  }
+  .pilar p { color: var(--cinza-claro); font-size: 15px; }
+
+  /* =========================================================
+     BENEFÍCIOS
+     ========================================================= */
+  .beneficios {
+    padding: 80px 0;
+  }
+  .beneficios h2 {
+    font-size: clamp(28px, 4vw, 44px);
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .beneficios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+  .beneficio {
+    background: var(--carvao);
+    padding: 28px;
+    border-radius: 10px;
+    border-left: 3px solid var(--esmeralda);
+  }
+  .beneficio-icon {
+    color: var(--esmeralda);
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+  .beneficio h3 {
+    font-family: var(--font-corpo);
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--branco);
+  }
+  .beneficio p { color: var(--cinza-claro); font-size: 15px; }
+
+  /* =========================================================
+     QUEBRA DE OBJEÇÕES
+     ========================================================= */
+  .objecoes {
+    padding: 80px 0;
+    background: var(--carvao);
+  }
+  .objecoes h2 {
+    font-size: clamp(28px, 4vw, 44px);
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .objecao {
+    background: var(--preto-tinta);
+    padding: 28px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .objecao .pergunta-obj {
+    font-family: var(--font-titulo);
+    font-size: 20px;
+    color: var(--vinho);
+    margin-bottom: 12px;
+    font-weight: bold;
+  }
+  .objecao .resposta {
+    color: var(--branco);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* =========================================================
+     SOBRE O CRIADOR
+     ========================================================= */
+  .sobre {
+    padding: 80px 0;
+  }
+  .sobre-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .sobre-foto {
+    width: 100%;
+    aspect-ratio: 1;
+    background: var(--carvao);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 3px solid var(--ambar);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cinza-claro);
+    font-size: 14px;
+    text-align: center;
+    padding: 20px;
+  }
+  .sobre-foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .sobre h2 { font-size: clamp(28px, 4vw, 40px); margin-bottom: 24px; }
+  .sobre p {
+    font-size: 17px;
+    color: var(--cinza-claro);
+    margin-bottom: 16px;
+  }
+  @media (max-width: 768px) {
+    .sobre-inner { grid-template-columns: 1fr; }
+  }
+
+  /* =========================================================
+     CONTEÚDO DO CURSO
+     ========================================================= */
+  .conteudo {
+    padding: 80px 0;
+    background: var(--carvao);
+  }
+  .conteudo h2 {
+    font-size: clamp(28px, 4vw, 44px);
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .modulos {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .modulo {
+    background: var(--preto-tinta);
+    padding: 24px 28px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    border-left: 4px solid var(--cobalto);
+  }
+  .modulo-num {
+    font-family: var(--font-titulo);
+    color: var(--cobalto);
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .modulo h3 {
+    font-family: var(--font-corpo);
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--branco);
+  }
+  .modulo p { color: var(--cinza-claro); font-size: 15px; }
+
+  /* =========================================================
+     OFERTA — preço, desconto, CTA principal
+     ========================================================= */
+  .oferta {
+    padding: 80px 0;
+    text-align: center;
+    background: radial-gradient(ellipse at center, rgba(245, 166, 35, 0.12) 0%, transparent 60%);
+  }
+  .oferta h2 {
+    font-size: clamp(32px, 5vw, 52px);
+    margin-bottom: 20px;
+  }
+  .oferta .subtitulo-oferta {
+    font-size: 19px;
+    color: var(--cinza-claro);
+    margin-bottom: 40px;
+  }
+  .card-oferta {
+    max-width: 540px;
+    margin: 0 auto;
+    background: var(--carvao);
+    border: 3px solid var(--ambar);
+    border-radius: 16px;
+    padding: 48px 32px;
+    position: relative;
+  }
+  .selo-lote {
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--vinho);
+    color: var(--branco);
+    padding: 8px 24px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .preco-de {
+    color: var(--cinza-claro);
+    font-size: 18px;
+    text-decoration: line-through;
+    margin-bottom: 8px;
+  }
+  .preco-por-label {
+    color: var(--ambar);
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .preco-valor {
+    font-family: var(--font-titulo);
+    font-size: 72px;
+    font-weight: bold;
+    color: var(--branco);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .preco-valor .moeda { font-size: 36px; vertical-align: super; }
+  .preco-info {
+    color: var(--cinza-claro);
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+
+  /* =========================================================
+     GARANTIA
+     ========================================================= */
+  .garantia {
+    padding: 80px 0;
+  }
+  .garantia-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--carvao);
+    border-radius: 16px;
+    padding: 48px;
+    text-align: center;
+    border: 2px solid var(--esmeralda);
+  }
+  .garantia-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--esmeralda);
+    border-radius: 50%;
+    margin: 0 auto 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-titulo);
+    font-size: 36px;
+    color: var(--branco);
+    font-weight: bold;
+  }
+  .garantia h2 {
+    font-size: clamp(26px, 4vw, 38px);
+    margin-bottom: 20px;
+  }
+  .garantia p {
+    font-size: 17px;
+    color: var(--cinza-claro);
+  }
+
+  /* =========================================================
+     FAQ
+     ========================================================= */
+  .faq {
+    padding: 80px 0;
+    background: var(--carvao);
+  }
+  .faq h2 {
+    font-size: clamp(28px, 4vw, 44px);
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .faq-item {
+    background: var(--preto-tinta);
+    border-radius: 10px;
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+  .faq-pergunta {
+    padding: 20px 24px;
+    cursor: pointer;
+    font-family: var(--font-corpo);
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--branco);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+  }
+  .faq-pergunta::after {
+    content: '+';
+    font-size: 24px;
+    color: var(--ambar);
+    transition: transform 0.3s;
+  }
+  .faq-item.aberto .faq-pergunta::after { transform: rotate(45deg); }
+  .faq-resposta {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding: 0 24px;
+    color: var(--cinza-claro);
+  }
+  .faq-item.aberto .faq-resposta {
+    max-height: 300px;
+    padding: 0 24px 20px;
+  }
+
+  /* =========================================================
+     FOOTER
+     ========================================================= */
+  footer {
+    padding: 40px 0;
+    text-align: center;
+    background: var(--preto-tinta);
+    border-top: 1px solid var(--carvao);
+    color: var(--cinza-claro);
+    font-size: 14px;
+  }
+   footer .logo { font-size: 18px; margin-bottom: 12px; display: inline-flex; }
+   footer .logo img { width: 28px; height: 28px; }
+
+  /* CTA flutuante seções */
+  .cta-section {
+    text-align: center;
+    padding: 40px 0;
+  }
+  .cta-frase {
+    font-family: var(--font-titulo);
+    font-style: italic;
+    font-size: 20px;
+    color: var(--ambar);
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .hero { padding: 60px 0 40px; }
+    .pilares { grid-template-columns: 1fr; }
+    .header-cta { padding: 8px 16px; font-size: 13px; }
+    .preco-valor { font-size: 56px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- =========================================================
+     HEADER (barra fixa)
+     EDITAR: nome do logo se quiser e o link do checkout
+     ========================================================= -->
+<header>
+  <div class="header-inner">
+    <div class="logo">
+       <img src="icone-ninja.png" alt="Ninja dos Cálculos">
+       <span style="color: var(--ambar);">Ninja</span><span> dos Cálculos</span>
+    </div>
+ 
+    <!-- EDITAR: trocar # pelo link do seu checkout Kiwify -->
+    <a href="https://pay.kiwify.com.br/5GIMoNY" class="header-cta">Quero Garantir</a>
+  </div>
+</header>
+
+<!-- =========================================================
+     HERO
+     EDITAR: pergunta provocativa, headline e subtítulo
+     ========================================================= -->
+<section class="hero">
+  <div class="container">
+    <p class="pergunta">
+      <!-- EDITAR: pergunta provocativa -->
+      Você ainda trava na hora de fazer uma conta simples durante a prova?
+    </p>
+    <h1>
+      <!-- EDITAR: headline principal -->
+      E se você pudesse resolver <span class="destaque">cálculos avançados em segundos</span>,
+      sem travar e sem medo?
+    </h1>
+    <p class="subtitulo">
+      <!-- EDITAR: subtítulo de apoio -->
+      Conheça a capacitação que vai transformar sua relação com números — inteiros, frações,
+      decimais e porcentagens — através de um método claro, prático e com resultado imediato.
+    </p>
+    <p class="slogan">
+      <!-- SLOGAN OFICIAL — não recomendo trocar -->
+      "Calcule mais rápido. Pense como um ninja."
+    </p>
+    <!-- EDITAR: trocar # pelo link do seu checkout Kiwify -->
+    <a href="https://pay.kiwify.com.br/5GIMoNY" class="cta-btn large">Quero me tornar um ninja dos cálculos →</a>
+  </div>
+</section>
+
+<!-- =========================================================
+     VSL (Video Sales Letter)
+     EDITAR: trocar o placeholder pelo iframe do seu vídeo
+     (YouTube, Vimeo, Panda Video, etc.)
+     ========================================================= -->
+<section class="vsl-section">
+  <div class="container">
+    <div class="vsl-wrapper">
+      <!-- EDITAR: substituir todo este bloco pelo iframe do vídeo
+           Exemplo YouTube:
+           <iframe width="100%" height="100%"
+             src="https://www.youtube.com/embed/SEU_VIDEO_ID"
+             frameborder="0" allowfullscreen></iframe>
+      -->
+     <iframe 
+  width="100%" 
+  height="100%"
+  src="https://www.youtube.com/embed/YpxUWOHIvOBluuZo?rel=0&modestbranding=1"
+  frameborder="0" 
+  allow="accelerated-2d-canvas; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+  allowfullscreen>
+    </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     SOLUÇÃO + 3 PILARES
+     ========================================================= -->
+<section class="solucao">
+  <div class="container">
+    <h2>Apresentando o <span style="color: var(--ambar);">Ninja dos Cálculos</span></h2>
+    <p class="intro">
+      <!-- EDITAR: descrição curta da solução -->
+      O Ninja dos cálculos é uma capacitação construída sobre 3 pilares que vão reprogramar sua forma de pensar com números.
+    </p>
+
+    <div class="pilares">
+      <!-- PILAR 1 -->
+      <div class="pilar">
+        <div class="pilar-num">01</div>
+        <h3>Estruture sua forma de pensar</h3>
+        <p>
+          Aprenda a enxergar cada conta como um caminho lógico — e não como um
+          problema. Você vai parar de "tentar lembrar" e começar a raciocinar.
+        </p>
+      </div>
+
+      <!-- PILAR 2 -->
+      <div class="pilar">
+        <div class="pilar-num">02</div>
+        <h3>Crie repertório</h3>
+        <p>
+          Domine atalhos, técnicas e padrões necessários para acelerar sua velocidade e
+          resolver tudo em segundos — de inteiros a porcentagens.
+        </p>
+      </div>
+
+      <!-- PILAR 3 -->
+      <div class="pilar">
+        <div class="pilar-num">03</div>
+        <h3>Pratique de forma deliberada</h3>
+        <p>
+          Treinos progressivos e direcionados que constroem velocidade real.
+          Conheça as técnicas utilizadas pelos ninjas dos cálculos.
+        </p>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <p class="cta-frase">Pare de depender da calculadora.</p>
+      <!-- EDITAR: trocar # pelo link do seu checkout -->
+      <a href="https://pay.kiwify.com.br/5GIMoNY" class="cta-btn">Quero o método agora</a>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     BENEFÍCIOS
+     EDITAR: textos dos benefícios
+     ========================================================= -->
+<section class="beneficios">
+  <div class="container">
+    <h2>O que você vai conquistar</h2>
+    <div class="beneficios-grid">
+
+      <div class="beneficio">
+        <div class="beneficio-icon">⚡</div>
+        <h3>Velocidade real em qualquer cálculo</h3>
+        <p>Faça contas com inteiros, frações, decimais e porcentagens em segundos.</p>
+      </div>
+
+      <div class="beneficio">
+        <div class="beneficio-icon">🧠</div>
+        <h3>Raciocínio afiado</h3>
+        <p>Reprograme a forma como seu cérebro processa números — sem decoreba.</p>
+      </div>
+
+      <div class="beneficio">
+        <div class="beneficio-icon">🎯</div>
+        <h3>Confiança em provas e no dia a dia</h3>
+        <p>Ganhe segurança em vestibulares, concursos, faculdade e situações reais.</p>
+      </div>
+
+      <div class="beneficio">
+        <div class="beneficio-icon">🥷</div>
+        <h3>Método claro</h3>
+        <p>Estruturação, repertório e prática deliberada — uma sequência testada.</p>
+      </div>
+
+      <div class="beneficio">
+        <div class="beneficio-icon">📚</div>
+        <h3>Aulas objetivas e diretas</h3>
+        <p>Sem enrolação. Cada aula entrega uma técnica prática que você usa hoje.</p>
+      </div>
+
+      <div class="beneficio">
+        <div class="beneficio-icon">🗺️</div>
+        <h3>Bônus: Mapas mentais</h3>
+        <p>Revise o conteúdo de forma facilitada.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     QUEBRA DE OBJEÇÕES
+     EDITAR: ajustar perguntas e respostas
+     ========================================================= -->
+<section class="objecoes">
+  <div class="container">
+    <h2>"Mas será que isso funciona pra mim?"</h2>
+
+    <div class="objecao">
+      <p class="pergunta-obj">"Eu sou ruim de matemática desde sempre."</p>
+      <p class="resposta">
+        Esse curso foi feito justamente pra quem nunca se deu bem com números.
+        O método dos 3 pilares começa do zero, sem assumir conhecimento prévio,
+        e te leva a um nível que hoje parece impossível.
+      </p>
+    </div>
+
+    <div class="objecao">
+      <p class="pergunta-obj">"Não tenho tempo pra mais um curso."</p>
+      <p class="resposta">
+        As aulas são curtas e diretas. Em 15 minutos por dia você já começa a
+        sentir diferença. Sem aulas longas, sem teoria desnecessária.
+      </p>
+    </div>
+
+    <div class="objecao">
+      <p class="pergunta-obj">"Já tentei outros cursos de matemática e não funcionou."</p>
+      <p class="resposta">
+        A maioria dos cursos ensina conteúdo. O Ninja dos Cálculos ensina
+        método. A diferença é que aqui você aprende COMO pensar, não
+        só O QUE calcular.
+      </p>
+    </div>
+
+    <div class="objecao">
+      <p class="pergunta-obj">"Eu uso calculadora pra tudo, pra que aprender?"</p>
+      <p class="resposta">
+        Calculadora é muleta. Em provas, entrevistas, reuniões e situações
+        reais, quem calcula rápido se destaca. Velocidade mental é uma
+        habilidade que abre portas.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- =========================================================
+     SOBRE O CRIADOR
+     EDITAR: foto, nome, bio
+     ========================================================= -->
+<section class="sobre">
+  <div class="container">
+    <div class="sobre-inner">
+      <div class="sobre-foto">
+        <!-- EDITAR: substituir por <img src="sua-foto.jpg" alt="Seu nome"> -->
+        <img src="foto-criador.jpg" alt="Criador do Ninja dos Cálculos">
+      </div>
+      <div>
+        <h2>Sobre o criador do método</h2>
+        <p>
+          <!-- EDITAR: seu nome e apresentação curta -->
+          <strong style="color: var(--ambar);">GABRIEL MIRANDA</strong> —
+          Engenheiro formado pela USP, com mais de 10 anos de experiência em ensino de exatas e raciocínio lógico.
+        </p>
+        <p>
+          <!-- EDITAR: parágrafo sobre sua trajetória -->
+          Vindo da escola pública, ingressei na USP através de estudo autodidata, 
+           combinando videoaulas, livros e apostilas de cursinho ao longo de 4 vestibulares 
+           da Fuvest. No mesmo período, conquistei bolsa integral do ProUni via Enem e 
+           aprovação em Engenharia de Automação e Controle na Unesp.
+        </p>
+        <p>
+          <!-- EDITAR: por que você criou o método -->
+           Desde os 19 anos atuo como professor particular de matemática, acumulando 
+            múltiplas aprovações em vestibulares, Enem e concursos. A combinação entre o estudo autodidata 
+           e a prática docente me permitiu identificar o que de fato gera velocidade no cálculo 
+            e o que é apenas conteúdo desnecessário.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     CONTEÚDO DO CURSO (módulos)
+     EDITAR: nomes e descrições dos módulos
+     ========================================================= -->
+<section class="conteudo">
+  <div class="container">
+    <h2>O que você vai aprender</h2>
+    <div class="modulos">
+
+      <div class="modulo">
+        <div class="modulo-num">Módulo 01</div>
+        <h3>Números inteiros</h3>
+        <p>Pare de calcular passo a passo. Domine atalhos para somar, subtrair, multiplicar e dividir inteiros em uma fração do tempo que você leva hoje..</p>
+      </div>
+
+      <div class="modulo">
+        <div class="modulo-num">Módulo 02</div>
+        <h3>Frações</h3>
+        <p>Opere frações com a mesma fluidez de quem trabalha com inteiros. Acabe com MMC travado, denominadores diferentes e qualquer hesitação diante de uma fração.</p>
+      </div>
+
+      <div class="modulo">
+        <div class="modulo-num">Módulo 03</div>
+        <h3>Decimais</h3>
+        <p>Multiplique, divida e opere decimais sem erro de vírgula e sem precisar de calculadora — com técnicas que te dão precisão e velocidade ao mesmo tempo.</p>
+      </div>
+
+      <div class="modulo">
+        <div class="modulo-num">Módulo 04</div>
+        <h3>Porcentagem</h3>
+        <p>Calcule descontos, juros, acréscimos e proporções de cabeça em segundos. Uma habilidade que se transforma em vantagem real em provas.</p>
+      </div>
+
+      <div class="modulo">
+        <div class="modulo-num">Módulo 05</div>
+        <h3>Operações Combinadas</h3>
+        <p>A síntese do método em ação: contas que misturam inteiros, frações, decimais e porcentagens, com conversões instantâneas entre formatos e zero perda de ritmo.</p>
+      </div>
+
+      <div class="modulo">
+        <div class="modulo-num">Módulo 06</div>
+        <h3>Bônus - Mapas Mentais dos Conteúdos</h3>
+        <p>Todo o repertório do curso condensado em mapas mentais visuais, prontos para consulta rápida e revisão estratégica sempre que precisar.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     OFERTA — preço e CTA principal
+     EDITAR: link do checkout Kiwify
+     ========================================================= -->
+<section class="oferta" id="oferta">
+  <div class="container">
+    <h2>Hora de se tornar um Ninja dos Cálculos</h2>
+    <p class="subtitulo-oferta">
+      Garanta sua vaga no <strong>lote pioneiro</strong> com condição especial de lançamento.
+    </p>
+
+    <div class="card-oferta">
+      <div class="selo-lote">Lote Pioneiro</div>
+      <p class="preco-de">De R$ 197,00</p>
+      <p class="preco-por-label">Por apenas</p>
+      <p class="preco-valor"><span class="moeda">R$</span>97<span style="font-size:36px;">,00</span></p>
+      <p class="preco-info">Pagamento único · acesso por 1 ano</p>
+
+      <!-- EDITAR: trocar # pelo seu link do checkout Kiwify -->
+      <a href="https://pay.kiwify.com.br/5GIMoNY" class="cta-btn large" style="display:block;">
+        QUERO GARANTIR MINHA VAGA
+      </a>
+
+      <p style="margin-top: 20px; color: var(--cinza-claro); font-size: 13px;">
+        🔒 Compra 100% segura · Pix, cartão ou boleto
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     GARANTIA
+     ========================================================= -->
+<section class="garantia">
+  <div class="container">
+    <div class="garantia-inner">
+      <div class="garantia-icon">7</div>
+      <h2>Garantia incondicional de 7 dias</h2>
+      <p>
+        <!-- EDITAR: texto da garantia -->
+        Faça o curso por 7 dias. Se por qualquer motivo você não sentir que
+        está se tornando mais rápido com cálculos, é só pedir o reembolso —
+        e devolvemos 100% do seu investimento. Sem perguntas, sem burocracia.
+        O risco é todo nosso.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     FAQ
+     EDITAR: perguntas e respostas
+     ========================================================= -->
+<section class="faq">
+  <div class="container">
+    <h2>Perguntas frequentes</h2>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-pergunta">Por quanto tempo terei acesso ao curso?</div>
+        <div class="faq-resposta">
+          <p>O acesso é de 1 ano completo a partir da sua compra. Você pode estudar no seu ritmo, pausar e retomar quando quiser ao longo desse período.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-pergunta">Preciso ter conhecimento prévio em matemática?</div>
+        <div class="faq-resposta">
+          <p>Não. O curso foi pensado para qualquer pessoa que queira ganhar agilidade nos cálculos. Embora o foco principal seja em técnicas para calcular com velocidade, todo o trabalho com números inteiros, frações, decimais e porcentagens é desenvolvido ao longo das aulas — você aprende tanto a operar quanto a fazer isso de forma rápida e eficiente.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-pergunta">Quanto tempo preciso dedicar por dia?</div>
+        <div class="faq-resposta">
+          <p>15 a 30 minutos por dia já são suficientes para evolução consistente. Você define seu ritmo.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-pergunta">Funciona em celular?</div>
+        <div class="faq-resposta">
+          <p>Sim! Você acessa de qualquer dispositivo com internet — celular, tablet ou computador.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-pergunta">Como recebo o curso depois da compra?</div>
+        <div class="faq-resposta">
+          <p>Após a confirmação do pagamento, você recebe imediatamente o acesso por e-mail.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-pergunta">Esse curso serve para concursos e vestibulares?</div>
+        <div class="faq-resposta">
+          <p>Sim. A velocidade e precisão que você desenvolve aqui são habilidades-chave para qualquer prova com tempo limitado.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-pergunta">E se eu não gostar?</div>
+        <div class="faq-resposta">
+          <p>Você tem 7 dias de garantia incondicional. Se não gostar, devolvemos seu dinheiro integralmente.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="cta-section" style="margin-top: 60px;">
+      <p class="cta-frase">Pense rápido. Calcule com eficiência. Se torne um Ninja dos Cálculos.</p>
+      <!-- EDITAR: trocar # pelo link do checkout -->
+      <a href="https://pay.kiwify.com.br/5GIMoNY" class="cta-btn large">Quero entrar pro lote pioneiro</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+<footer>
+  <div class="container">
+    <div class="logo" style="justify-content: center;">
+      <img src="icone-ninja.png" alt="Ninja dos Cálculos">
+      <span style="color: var(--ambar);">Ninja</span><span> dos Cálculos</span>
+    </div>
+    <p>© 2026 Ninja dos Cálculos · Todos os direitos reservados</p>
+  </div>
+</footer>
+
+<!-- =========================================================
+     SCRIPT — abre/fecha o FAQ ao clicar
+     ========================================================= -->
+<script>
+  document.querySelectorAll('.faq-pergunta').forEach(item => {
+    item.addEventListener('click', () => {
+      item.parentElement.classList.toggle('aberto');
+    });
+  });
+</script>
+
+</body>
+</html>
