@@ -610,6 +610,33 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1314288777259908&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+ 
+<!-- Função de tracking de cliques no CTA -->
+<script>
+  function trackBotaoCompra() {
+    // Pixel da Meta
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'InitiateCheckout', {
+        value: 97.00,
+        currency: 'BRL',
+        content_name: 'Ninja dos Calculos - Lote Pioneiro'
+      });
+    }
+    // Google Analytics 4
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'begin_checkout', {
+        value: 97.00,
+        currency: 'BRL',
+        items: [{
+          item_name: 'Ninja dos Calculos - Lote Pioneiro',
+          price: 97.00,
+          quantity: 1
+        }]
+      });
+    }
+  }
+</script>
+
 
 </head>
 <body>
